@@ -666,7 +666,13 @@
     applyTheme(btn.dataset.theme);
   });
 
-  const instructionsByMode = {
+  const isTouchDevice = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+
+  const instructionsByMode = isTouchDevice ? {
+    shift: "Keep your head still. Watch the point grow near and shrink far. Tap the stage the instant it glows.",
+    pursuit: "Follow the point smoothly with your eyes only — no head movement. Tap the stage when it glows.",
+    blink: "Close your eyes on the low cue, and open them on the bright cue. No need to watch the screen."
+  } : {
     shift: "Keep your head still. Watch the point grow near and shrink far. Tap or press space the instant it glows.",
     pursuit: "Follow the point smoothly with your eyes only — no head movement. Tap or press space when it glows.",
     blink: "Close your eyes on the low cue, and open them on the bright cue. No need to watch the screen."
